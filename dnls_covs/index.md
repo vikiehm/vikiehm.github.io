@@ -30,14 +30,14 @@ CVPR 2023 <br>
 <td style="border: none;">
 <a href="#" style="color: #000000">
 <div class="link_button">
-<i class="bi bi-file-earmark-richtext"></i> Paper (Soon)
+<i class="bi bi-file-earmark-richtext"></i><a href="https://arxiv.org/abs/2305.09527"> Paper
 </div>
 </a>
 </td>
 <td style="border: none; display: initial;">
 <a href="#" style="color: #000000">
 <div class="link_button">
-<i class="bi bi-github"></i> Code (Soon)
+<i class="bi bi-github"></i><a href="https://github.com/DominikMuhle/dnls_covs"> Code
 </div>
 </a>
 </td>
@@ -136,7 +136,14 @@ The tables show the average results on the test set over 5 runs for SuperPoint a
 
 # Citation
 
-(Soon)
+```
+@article{muhle2023dnls_covs,
+      title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares}, 
+      author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
+      journal={arXiv preprint arXiv:2305.09527},
+      year={2023},
+}
+```
 
 # Acknowledgements
 
