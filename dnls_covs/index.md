@@ -44,7 +44,7 @@ CVPR 2023 <br>
 <td style="border: none;">
 <a href="#" style="color: #000000">
 <div class="link_button">
-<i class="bi bi-youtube"></i> Video (Soon)
+<i class="bi bi-youtube"></i><a href="https://www.youtube.com/watch?v=_wDUresP6v8&t=23s"> Video
 </div>
 </a>
 </td>
@@ -57,6 +57,7 @@ CVPR 2023 <br>
   <source src="./assets/header_vid.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+
 ***Visual Odometry on KITTI.** Input image (top left), color-coded dense covariances (bottom left) and resulting trajectory (right). Color coding of the covariances is given by hue (size), orientation (color), and saturation (anisotropy). First sequence uses our supervised covariances, second sequence uses our unsupervised covariances.*
 
 # Abstract
