@@ -7,7 +7,7 @@ permalink: /dnls_covs/
 <center>
     <h1 style="display: block;">Learning Correspondence Uncertainty<br>via Differentiable Nonlinear Least Squares</h1>
     CVPR 2023 <br>
-    <table style="border: none; display: initial;">
+        <table style="border: none; display: initial;">
         <tr style="border: none;">
         <td style="border: none;"><a href="https://vision.in.tum.de/members/muhled">Dominik Muhle</a><sup>1,2</sup></td>
         <td style="border: none;"><a href="https://lukaskoestler.com">Lukas Koestler</a><sup>1,2</sup></td>
@@ -15,7 +15,7 @@ permalink: /dnls_covs/
         <td style="border: none;"><a href="https://vision.in.tum.de/members/cremers">Daniel Cremers</a><sup>1,2,3</sup></td>
         </tr>
         </table>
-        <br>
+    <br>
         <table style="border: none; display: initial;">
         <tr style="border: none;">
         <td style="border: none;"><sup>1</sup>TU Munich</td>
@@ -24,13 +24,14 @@ permalink: /dnls_covs/
         <td style="border: none;"><sup>4</sup>MIT</td>
         </tr>
         </table>
-        <br>
+    <br>
         <table style="border: none; display: initial;">
         <tr style="border: none;">
         <td style="border: none;">
         <a href="#" style="color: #000000">
         <div class="link_button">
         <i class="bi bi-file-earmark-richtext"></i><a href="https://arxiv.org/abs/2305.09527"> Paper
+        </a>
         </div>
         </a>
         </td>
@@ -38,6 +39,7 @@ permalink: /dnls_covs/
         <a href="#" style="color: #000000">
         <div class="link_button">
         <i class="bi bi-github"></i><a href="https://github.com/DominikMuhle/dnls_covs"> Code
+        </a>
         </div>
         </a>
         </td>
@@ -45,12 +47,12 @@ permalink: /dnls_covs/
         <a href="#" style="color: #000000">
         <div class="link_button">
         <i class="bi bi-youtube"></i><a href="https://www.youtube.com/watch?v=_wDUresP6v8&t=23s"> Video
+        </a>
         </div>
         </a>
         </td>
         </tr>
-    </table>
-    <!-- <br> -->
+        </table>
 </center>
 
 <video width="100%" autoplay muted loop>
@@ -137,14 +139,14 @@ The tables show the average results on the test set over 5 runs for SuperPoint a
 
 # Citation
 
-<!-- ```
+```
 @article{muhle2023dnls_covs,
       title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares}, 
       author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
       journal={arXiv preprint arXiv:2305.09527},
       year={2023},
 }
-``` -->
+```
 
 # Acknowledgements
 
