@@ -1,0 +1,21 @@
+danielcremers:
+  first_name: Daniel
+  last_name: Cremers
+  website: https://vision.in.tum.de/members/cremers
+dominikmuhle:
+  first_name: Dominik
+  last_name: Muhle
+  website: https://vision.in.tum.de/members/muhled
+  is_me: true
+lukaskoestler:
+  first_name: Lukas
+  last_name: Koestler
+  website: https://lukaskoestler.com
+nikodemmel:
+  first_name: Nikolaus
+  last_name: Demmel
+  website: https://cvg.cit.tum.de/members/demmeln
+florianbernard:
+  first_name: Florian
+  last_name: Bernard
+  website: https://lovc.cs.uni-bonn.de/index.php/team/florian-bernard/

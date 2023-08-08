@@ -1,36 +1,113 @@
 <!DOCTYPE html>
-<!-- <html>
+<html>
 
-{% include head.html %}
+<head>
+  <meta charset="utf-8">
+  <!-- <title>{{ page.title }}</title> -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700&family=Noto+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="{{ '/css/fontawesome.all.min.css' | relative_url }}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
+  <link href="{{ '/css/index.css' | relative_url }}" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script defer src="{{ '/js/fontawesome.all.min.js' | relative_url }}"></script>
+  <script src="{{ '/js/index.js' | relative_url }}"></script>
+</head>
 
 <body>
+  <div class="page-content">
+    <div class="wrapper">
+      <center>
+        <h1 style="display: block;">{{page.title}}</h1>
+        CVPR 2023
+        <br>
+        <table style="border: none; display: initial;">
+          <tr style="border: none;">
+            {% for author_id in page.authors %}
+            {% if site.data.authors_external[author_id.name] != nil %}
+            {% assign author = site.data.authors_external[author_id.name] %}
+            {% endif %}
+            {% if site.data.authors_internal[author_id.name] != nil %}
+            {% assign author = site.data.authors_internal[author_id.name] %}
+            {% endif %}
+            <td style="border: none;"><a href="{{author.website}}">{{ author.first_name }} {{ author.middle_name }} {{
+                author.last_name }}</a><sup>{{ author_id.affiliations }}</sup></td>
+            {% endfor %}
+          </tr>
+        </table>
+        <br>
+        <table style="border: none; display: initial;">
+          <tr style="border: none;">
+            {% assign i = 1 %}
+            {% for aff_id in page.affiliations %}
+            {% assign affiliation = site.data.affiliations[aff_id.name] %}
+            <!-- <td style="border: none;"><a href="{{author.website}}">{{ author.first_name }} {{ author.middle_name }} {{ author.last_name }}</a><sup>{{ author_id.affiliations }}</sup></td> -->
+            <td style="border: none;"><sup>{{i}}</sup>{{affiliation[aff_id.length]}}</td>
+            {% assign i = i|plus:1 %}
+            {% endfor %}
+          </tr>
+        </table>
+        <br>
+        <table style="border: none; display: initial;">
+          <tr style="border: none;">
+            {% for link in page.links %}
+            {% if link.name != "Project Page" %}
+            <td style="border: none;">
+              <a href="{{ link.link }}" style="color: #000000">
+                <div class="link_button">
+                  {% if link.style != nil %}
+                  <i class="{{link.style}}"></i> {{link.name}}
+                  {% else %}
+                  {{link.name}}
+                  {% endif %}
+                </div>
+              </a>
+            </td>
+            {% endif %}
+            {% endfor %}
+          </tr>
+        </table>
+      </center>
 
-    <div class="page-content">
-        <div class="wrapper">
-            {{ content }}
-        </div>
+      {{ content }}
+
+      {% if page.citation != nil %}
+      <h2>Citation <a onclick="CopyToClipboard('{{page.citation}}')" class="btn btn--primary">
+          <i class="fa fa-copy"></i>
+        </a></h2>
+      <pre>
+<code id="citation_block">
+</code>
+      </pre>
+      <script src="{{ site.baseurl }}{% link js/copy_to_clipboard.js %}"></script>
+      <script>
+        document.getElementById("citation_block").innerHTML = formateCitationHTML("{{page.citation}}");
+      </script>
+      {% endif %}
+
+      {% if page.acknowledgements != nil %}
+      <h2>Acknowledgements</h2>
+      <p>
+        {{page.acknowledgements}}
+      </p>
+      {% endif %}
     </div>
-
+  </div>
 </body>
 
-</html> -->
+</html>
+
+<!-- <script src="{{ site.baseurl }}{% link js/copy_to_clipboard.js %}"></script> -->
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    processEscapes: true
-  }
-});
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-    type="text/javascript"></script>
-<!-- <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    processEscapes: true
-  }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-    type="text/javascript"></script> -->
+  type="text/javascript"></script>

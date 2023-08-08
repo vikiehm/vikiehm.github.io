@@ -1,0 +1,15 @@
+tum:
+  long: Technical University of Munich
+  short: TUM
+mcml:
+  long: Munich Center for Machine Learning
+  short: MCML
+bonn:
+  long: University of Bonn
+  short: University of Bonn
+oxford:
+  long: University of Oxford
+  short: Oxford
+mit:
+  long: Massachusetts Institute of Technology
+  short: MIT
