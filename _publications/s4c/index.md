@@ -12,6 +12,8 @@ authors:
     affiliations: "1"
   - name: felixwimbauer
     affiliations: "1,2"
+  - name: dominikmuhle
+    affiliations: "1,2"
   - name: christianrupprecht
     affiliations: "3"
   - name: danielcremers
