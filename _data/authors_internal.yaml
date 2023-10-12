@@ -5,7 +5,7 @@ danielcremers:
 dominikmuhle:
   first_name: Dominik
   last_name: Muhle
-  website: https://vision.in.tum.de/members/muhled
+  website: https://dominikmuhle.github.io
   is_me: true
 lukaskoestler:
   first_name: Lukas
@@ -22,4 +22,4 @@ florianbernard:
 adrianhayler:
   first_name: Adrian
   last_name: Hayler
-  website:
+  website: https://ahayler.github.io
