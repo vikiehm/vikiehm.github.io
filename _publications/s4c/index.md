@@ -2,16 +2,18 @@
 layout: page
 permalink: publications/s4c/
 date: 2023_05_30 # determines sorting just take the date of the first publication as YYYY_MM_DD
-image: https://ahayler.github.io/publications/s4c/assets/teaser.png
-image_mouseover: https://ahayler.github.io/publications/s4c/assets/header_video.mp4
+image: assets/teaser.png
+image_mouseover: assets/header_video.mp4
 
 title: "S4C: Self-Supervised Semantic Scene Completion with Neural Fields"
 venue: ArXiv, 2023
 authors:
   - name: adrianhayler
     affiliations: "1"
+    equal_contribution: True
   - name: felixwimbauer
     affiliations: "1,2"
+    equal_contribution: True
   - name: dominikmuhle
     affiliations: "1,2"
   - name: christianrupprecht

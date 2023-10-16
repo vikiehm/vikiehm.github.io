@@ -10,8 +10,10 @@ venue: CVPR, 2022
 authors:
   - name: dominikmuhle
     affiliations: "1"
+    equal_contribution: True
   - name: lukaskoestler
     affiliations: "1"
+    equal_contribution: True
   - name: nikodemmel
     affiliations: "1"
   - name: florianbernard

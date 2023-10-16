@@ -34,17 +34,22 @@
             {% assign author = site.data.authors_internal[author_id.name] %}
             {% endif %}
             <td style="border: none;"><a href="{{author.website}}">{{ author.first_name }} {{ author.middle_name }} {{
-                author.last_name }}</a><sup>{{ author_id.affiliations }}</sup></td>
+                author.last_name }}</a><sup></sup>
+              {% if author_id.equal_contribution != nil %}*{% endif %}
+              {{ author_id.affiliations }}
+              </sup></td>
             {% endfor %}
           </tr>
         </table>
+        {% for author_id in page.authors %}
+        {% if author_id.equal_contribution != nil %}<sup>*</sup> equal contribution {% break %}{% endif %}
+        {% endfor %}
         <br>
         <table style="border: none; display: initial;">
           <tr style="border: none;">
             {% assign i = 1 %}
             {% for aff_id in page.affiliations %}
             {% assign affiliation = site.data.affiliations[aff_id.name] %}
-            <!-- <td style="border: none;"><a href="{{author.website}}">{{ author.first_name }} {{ author.middle_name }} {{ author.last_name }}</a><sup>{{ author_id.affiliations }}</sup></td> -->
             <td style="border: none;"><sup>{{i}}</sup>{{affiliation[aff_id.length]}}</td>
             {% assign i = i|plus:1 %}
             {% endfor %}
