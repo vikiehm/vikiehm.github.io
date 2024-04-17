@@ -52,6 +52,6 @@ citation: '@inproceedings{han2024kdbts,
 }'
 
 
-acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Cen- ter for Machine Learning, and by the German Federal Min- istry of Transport and Digital Infrastructure (BMDV) under grant 19F2251F for the ADAM project.'
+acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Center for Machine Learning, and by the German Federal Ministry of Transport and Digital Infrastructure (BMDV) under grant 19F2251F for the ADAM project.'
 
 ---
