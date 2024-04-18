@@ -134,7 +134,7 @@ acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON,
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3 has-text-left">Overview</h2>
+          <h2 class="title is-3 has-text-left">Architecture</h2>
           <p class="content has-text-justified">
               <img width="100%" src="./assets/architecture.png" />
               <br><br>

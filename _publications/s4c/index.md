@@ -6,7 +6,7 @@ image: assets/teaser.png
 image_mouseover: assets/header_video.mp4
 
 title: "S4C: Self-Supervised Semantic Scene Completion with Neural Fields"
-venue: ArXiv, 2023
+venue: "3DV Spotlight, 2024"
 authors:
   - name: adrianhayler
     affiliations: "1"
@@ -34,26 +34,21 @@ links:
     - name: Project Page
       link: https://ahayler.github.io/publications/s4c/
     - name: Paper
-      link: https://arxiv.org/abs/2305.09527 # change this as soon as the paper is uploaded
+      link: https://arxiv.org/abs/2310.07522
       style: "bi bi-file-earmark-richtext"
-    # - name: Code
-    #  link: # after clean up
-    #   style: "bi bi-github"
+    - name: Code
+      link: https://github.com/ahayler/s4c
+      style: "bi bi-github"
     # - name: Video
     #   link: # after video was created
     #   style: "bi bi-youtube"
 
-# citation: # insert citation when is published
+citation: '@inproceedings{hayler2023s4c,
+ title = {S4C: Self-Supervised Semantic Scene Completion with Neural Fields},
+ author = {A Hayler and F Wimbauer and D Muhle and C Rupprecht and D Cremers},
+ booktitle = {2024 International Conference on 3D Vision (3DV)},
+ year = {2024},
+}'
 
-# acknowledgements: # don't know
-
-# citation: '@article{muhle2023dnls_covs,
-#   title={Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares},
-#   author={Dominik Muhle and Lukas Koestler and Krishna Murthy Jatavallabhula and Daniel Cremers},
-#   journal={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-#   year={2023},
-# }'
-
-# acknowledgements: 'This work was supported by the ERC Advanced Grant SIMULACRON, by the Munich Center for Machine Learning and by the EPSRC Programme Grant VisualAI EP/T028572/1.'
-# # citation: "@{ASDF}"
+acknowledgements: 'This work was supported by the ERC Ad- vanced Grant SIMULACRON, by the Munich Center for Machine Learn- ing and by the EPSRC Programme Grant VisualAI EP/T028572/1. C. R. is supported by VisualAI EP/T028572/1 and ERC-UNION-CoG-101001212.'
 ---
