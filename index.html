@@ -36,6 +36,7 @@ layout: null
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script defer src="{{ '/js/fontawesome.all.min.js' | relative_url }}"></script>
   <script src="{{ '/js/index.js' | relative_url }}"></script>
+  <link rel="icon"  type="image/x-icon" href="/assets/favicon.ico">
 </head>
 
 <body>
@@ -122,16 +123,18 @@ layout: null
       {% for publication in sorted %}
       <div class="publication-block columns">
 
-        <div class="column is-4">
-          <div class="publication-image {% if publication.image_mouseover %}publication-mousecell{% endif %}">
-            {% if publication.image_mouseover contains "mp4" %}
-            <video autoplay preload playsinline class="" height="100%" loop muted width="100%">
-              <source src="{{publication.permalink}}{{ publication.image_mouseover }}" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            {% endif %}
-            <img alt="{{publication.title}}" src="{{publication.permalink}}{{ publication.image }}" />
-          </div>
+        <div class="column is-4">     
+          {% if publication.image_mouseover contains "mp4" %}
+            <div class="publication-image {% if publication.image_mouseover %}publication-mousecell{% endif %}">
+              <video autoplay preload playsinline class="" height="100%" loop muted width="100%">
+                <source src="{{publication.permalink}}{{ publication.image_mouseover }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <img alt="{{publication.title}}" src="{{publication.permalink}}{{ publication.image }}" />
+            </div>
+          {% else %}
+            <img width="100%" src="{{publication.permalink}}{{ publication.image }}" onmouseover="this.src='{{publication.permalink}}{{ publication.image_mouseover }}';" onmouseout="this.src='{{publication.permalink}}{{ publication.image }}';" style="display: inline-block;"/>
+          {% endif %}
         </div>
 
         <div class="column">

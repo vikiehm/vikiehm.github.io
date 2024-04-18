@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <title>{{ page.title }}</title> -->
+  <title>{{ page.title }}</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/bulma.min.css">
   <link rel="stylesheet" href="/assets/css/bulma-carousel.min.css">
@@ -23,11 +23,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script defer src="{{ '/js/fontawesome.all.min.js' | relative_url }}"></script>
   <script src="{{ '/js/index.js' | relative_url }}"></script>
-  <!-- {% if page.icon %}
-    <link rel="shortcut icon" href="{{ page.icon }}" type="image/x-icon">
-  {% else %} -->
-  <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
-  <!-- {% endif %} -->
+  {% if page.icon %}
+    <link rel="icon"  type="image/x-icon" href="{{ page.icon }}">
+  {% else %}
+    <link rel="icon"  type="image/x-icon" href="/assets/favicon.ico">
+  {% endif %}
 </head>
 
 <body>
