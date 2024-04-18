@@ -1,8 +1,14 @@
+- date: April 2024
+  description: 'ANOTHER new website layout'
+- date: March 2024
+  description: 'Happy to announce that my students paper "Boosting Self-Supervision for Single View Scene Completion via Knowledge Distillation" was accepted to CVPR 2024'
+- date: November 2023
+  description: 'Our Paper "S4C: Self-Supervised Semantic Scene Completion with Neural Fields" has been accepted as one of the spotlight papers at 3DV 2024'
 - date: July 2023
-  description: New website layout
+  description: 'New website layout'
 - date: April 2023
-  description: Happy to announce that our paper "Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares" was accepted to CVPR2023
+  description: 'Happy to announce that our paper "Learning Correspondence Uncertainty via Differentiable Nonlinear Least Squares" was accepted to CVPR 2023'
 - date: April 2022
-  description: The Probabilistic Normal Epipolar Constraint for Frame-To-Frame Rotation Optimization under Uncertain Feature Positions to CVPR2022
+  description: 'The Probabilistic Normal Epipolar Constraint for Frame-To-Frame Rotation Optimization under Uncertain Feature Positions to CVPR 2022'
 - date: April 2022
-  description: Started my PhD at the Computer Vision Group at TUM under the guidance of Prof. Daniel Cremers
+  description: 'Started my PhD at the Computer Vision Group at TUM under the guidance of Prof. Daniel Cremers'
