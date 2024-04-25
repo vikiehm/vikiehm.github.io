@@ -20,6 +20,11 @@ search: false
 @import "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css";
 @import "{{ '/assets/css/index.css' | relative_url }}";
 
+article.page {
+    float: left;
+    width: 100%;
+}
+
 // make text font size smaller
 .page__content {
   p,
