@@ -1,0 +1,32 @@
+---
+layout: archive
+classes: wide
+---
+
+{{ content }}
+
+<p>
+    I am a PhD student at the Computer Vision Group at TU Munich under the guidance of Prof. Cremers. This is an overview over projects I was personally involved in. Check out more awesome work from our group at https://cvg.cit.tum.de/publications.
+    <br>
+    My research interest mainly lie in visual odometry, SLAM, and 3D reconstruction. However, sometimes I also dabble in various other computer vision topics.
+    <br>
+    I have obtained my master's degree in computer science (Robotics, Cognition, Intelligence) from the Technical University of Munich. My master's thesis was on the topic of "Probabilistic Normal Epipolar Constraint for Frame-To-Frame Rotation Optimization under Uncertain Feature Positions". The thesis was supervised by Prof. Cremers, Lukas Koestler and Nikolaus Demmel.
+    <br>
+    I have obtained my bachelor's degree in electrical engineering from the Karlsruhe Institute of Technology (KIT).
+</p>
+
+<div class="hr">
+<div class="container">
+    <hr>
+</div>
+</div>
+
+<h2 class="title is-3">News</h2>
+<div class="content">
+    {% for news in site.data.news %}
+    <b>{{ news.date }}</b>: {{ news.description | markdownify | remove: '<p>' | remove: '</p>' }}
+    <div class="hr">
+            <hr>
+    </div>
+    {% endfor %}
+</div>

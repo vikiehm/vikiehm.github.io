@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="/assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="/assets://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="/assets/css/slider-component.css">
+  <!-- <link rel="stylesheet" href="/assets/css/index.css"> -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@700&family=Noto+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="{{ '/assets/css/fontawesome.all.min.css' | relative_url }}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
+  <link href="{{ '/assets/css/index.css' | relative_url }}" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script defer src="{{ '/js/fontawesome.all.min.js' | relative_url }}"></script>
+  <script src="{{ '/js/index.js' | relative_url }}"></script>
+  {% if page.icon %}
+    <link rel="icon"  type="image/x-icon" href="{{ page.icon }}">
+  {% else %}
+    <link rel="icon"  type="image/x-icon" href="/assets/favicon.ico">
+  {% endif %}
+</head>
+
+<body>
+  <center>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">{{ page.title }}</h1>
+              <h3 class="title is-3 publication-title">{{ page.venue }}</h3>
+              <div class="is-size-5 publication-authors">
+                {% for author_id in page.authors %}
+                {% if site.data.authors_external[author_id.name] != nil %}
+                {% assign author = site.data.authors_external[author_id.name] %}
+                {% endif %}
+                {% if site.data.authors_internal[author_id.name] != nil %}
+                {% assign author = site.data.authors_internal[author_id.name] %}
+                {% endif %}
+                <span class="author-block">
+                  <a href="{{author.website}}" target="_blank">{{ author.first_name }} {{ author.middle_name }} {{ author.last_name }}</a><sup>{% if author_id.equal_contribution != nil %}*{% endif %}{{ author_id.affiliations }}</sup>
+                </span>
+                {% endfor %}
+              </div>
+              <div class="is-size-5 publication-affiliations">
+                {% assign i = 1 %}
+                {% for aff_id in page.affiliations %}
+                {% assign affiliation = site.data.affiliations[aff_id.name] %}
+                <span class="affiliation-block">
+                  <sup>{{i}}</sup>{{affiliation[aff_id.length]}}
+                </span>
+                {% assign i = i|plus:1 %}
+                {% endfor %}
+              </div>
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  {% for link in page.links %}
+                  {% if link.name != "Project Page" %}
+                  <span class="link-block">
+                    <a href="{{ link.link }}" target="_blank" class="external_link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        {% if link.style != nil %}
+                        <i class="{{link.style}}"></i>
+                        {% else %}
+                        <i class="fas fa-external-link-alt"></i>
+                        {% endif %}
+                      </span>
+                      <span>{{link.name}}</span>
+                    </a>
+                  </span>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </center>
+    <!-- Content -->
+    {{ page.content }}
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <!-- citation -->
+          {% if page.citation != nil %}
+          <h2>Citation <a onclick="CopyToClipboard('{{page.citation}}')" class="btn btn--primary">
+            <i class="fa fa-copy"></i>
+          </a></h2>
+          <pre>
+<code id="citation_block">
+</code>
+          </pre>
+          <script src="{{ site.baseurl }}{% link js/copy_to_clipboard.js %}"></script>
+          <script>
+            document.getElementById("citation_block").innerHTML = formateCitationHTML("{{page.citation}}");
+            </script>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    <!-- Acknowledgements -->
+    {% if page.acknowledgements != nil %}
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <h2>Acknowledgements</h2>
+              <p>
+                {{page.acknowledgements}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    {% endif %}
+</body>
+
+</html>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  type="text/javascript"></script>
