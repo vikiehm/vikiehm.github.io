@@ -1,8 +1,3 @@
-article.page {
-    float: left;
-    width: 100%;
-}
-
 /* Copyright comment */
 @import "minimal-mistakes/copyright";
 
@@ -40,3 +35,32 @@ article.page {
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+
+
+.fullwide {
+    .page {
+        float: left;
+        width: 100%;
+        @include breakpoint($large) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        @include breakpoint($x-large) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    .page__related {
+        float: left;
+        width: 100%;
+        @include breakpoint($large) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        @include breakpoint($x-large) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
