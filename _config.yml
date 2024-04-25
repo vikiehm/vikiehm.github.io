@@ -22,7 +22,7 @@
 remote_theme: mmistakes/minimal-mistakes
 minimal_mistakes_skin: default
 plugins:
-  - jekyll-remote-theme
+  # - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-paginate
