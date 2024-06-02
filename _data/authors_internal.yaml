@@ -2,32 +2,12 @@ danielcremers:
   first_name: Daniel
   last_name: Cremers
   website: https://vision.in.tum.de/members/cremers
-dominikmuhle:
-  first_name: Dominik
-  last_name: Muhle
-  website: https://dominikmuhle.github.io
-  is_me: true
-lukaskoestler:
-  first_name: Lukas
-  last_name: Koestler
-  website: https://lukaskoestler.com
-nikodemmel:
-  first_name: Nikolaus
-  last_name: Demmel
-  website: https://cvg.cit.tum.de/members/demmeln
 florianbernard:
   first_name: Florian
   last_name: Bernard
   website: https://lovc.cs.uni-bonn.de/index.php/team/florian-bernard/
-felixwimbauer:
-  first_name: Felix
-  last_name: Wimbauer
-  website: https://cvg.cit.tum.de/members/wimbauer
-adrianhayler:
-  first_name: Adrian
-  last_name: Hayler
-  website: https://ahayler.github.io
-keonheehan:
-  first_name: Keonhee
-  last_name: Han
-  website: https://keonhee-han.github.io
+viktoriaehm:
+  first_name: Viktoria
+  last_name: Ehm
+  website: https://vikiehm.github.io
+  is_me: true
