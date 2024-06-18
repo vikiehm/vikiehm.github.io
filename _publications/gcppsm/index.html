@@ -106,7 +106,6 @@ acknowledgements: 'This work was supported by the Munich Center for Machine Lear
     </div>
   </div>
 </section>
-<!-- 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
@@ -114,17 +113,24 @@ acknowledgements: 'This work was supported by the Munich Center for Machine Lear
         <div class="column is-four-fifths">
           <h2 class="title is-3 has-text-left">Overview</h2>
           <p class="content has-text-justified">
-              <img width="100%" src="./assets/teaser.png" />
+              <img width="100%" src="assets/pipeline_gcppsm.jpg" />
               <br><br>
-              a) We propose a symetric extension of the <a href="https://arxiv.org/abs/2204.02256" target="_blank">Probabiltistic Normal Epipolar Constraint</a>() (PNEC) to more accurately model the geometry of relative pose estimation with uncertain feature positions.
-              <br>
-              b) We propose a learning strategy to minimize the relative pose error by learning feature position uncertainty through differentiable nonlinear least squares (DNLS). This learning strategy can be combined with any feature extraction algorithm. We evaluate our learning framework with synthetic experiments and on real-world data in a visual odometry setting.  We show that our framework is able to generalize to different feature extraction algorithms such as SuperPoint and feature tracking approaches.
+              Our Partial-to-Partial Shape Matching Pipeline. </b> (Left) The
+              3D meshes are fed into a feature extractor that returns vertex-wise
+              features, that are transformed in trianglewise features. (Middle) With
+              these features, we define an integer program that ensures that every
+              triangle is matched at most once for both shapes, that at least one
+              non-boundary triangle is matched (per shape), and that neighboring
+              relationships for inner triangles are fulfilled. (Right) We tackle
+              this non-linear integer program by solving a subset of integer linear
+              programs (ILPs) for a specific number of matchings.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
