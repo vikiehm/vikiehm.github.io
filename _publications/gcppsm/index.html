@@ -54,20 +54,29 @@ citation: '@inproceedings{ehm2024partial,
 acknowledgements: 'This work was supported by the Munich Center for Machine Learning'
 ---
 
-<!-- <section class="hero teaser">
+<section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video width="100%" autoplay muted loop>
-        <source src="./assets/header_vid.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+        <source src="./assets/header_vid.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
       <p class="content has-text-justified">
-        <i><b> Visual Odometry on KITTI. </b> Input image (top left), color-coded dense covariances (bottom left) and resulting trajectory (right). Color coding of the covariances is given by hue (size), orientation (color), and saturation (anisotropy). First sequence uses our supervised covariances, second sequence uses our unsupervised covariances.</i>
+        <i
+          ><b> Our Partial-to-Partial Shape Matching Pipeline. </b> (Left) The
+          3D meshes are fed into a feature extractor that returns vertex-wise
+          features, that are transformed in trianglewise features. (Middle) With
+          these features, we define an integer program that ensures that every
+          triangle is matched at most once for both shapes, that at least one
+          non-boundary triangle is matched (per shape), and that neighboring
+          relationships for inner triangles are fulfilled. (Right) We tackle
+          this non-linear integer program by solving a subset of integer linear
+          programs (ILPs) for a specific number of matchings.</i
+        >
       </p>
     </div>
   </div>
 </section>
-
 
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -76,14 +85,31 @@ acknowledgements: 'This work was supported by the Munich Center for Machine Lear
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-              We propose a differentiable nonlinear least squares framework to account for uncertainty in relative pose estimation from feature correspondences. Specifically, we introduce a symmetric version of the probabilistic normal epipolar constraint, and an approach to estimate the covariance of feature positions by differentiating through the camera pose estimation procedure. We evaluate our approach on synthetic, as well as the KITTI and EuRoC real-world datasets. On the synthetic dataset, we confirm that our learned covariances accurately approximate the true noise distribution. In real world experiments, we find that our approach consistently outperforms state-of-the-art non-probabilistic and probabilistic approaches, regardless of the feature extraction algorithm of choice.
+            Finding correspondences between 3D shapes is an im- portant and
+            long-standing problem in computer vision, graphics and beyond. A
+            prominent challenge are partial- to-partial shape matching settings,
+            which occur when the shapes to match are only observed incompletely
+            (e.g. from 3D scanning). Although partial-to-partial matching is a
+            highly relevant setting in practice, it is rarely explored. Our work
+            bridges the gap between existing (rather artificial) 3D full shape
+            matching and partial-to-partial real-world set- tings by exploiting
+            geometric consistency as a strong con- straint. We demonstrate that
+            it is indeed possible to solve this challenging problem in a variety
+            of settings. For the first time, we achieve geometric consistency
+            for partial- to-partial matching, which is realized by a novel
+            integer non-linear program formalism building on triangle prod- uct
+            spaces, along with a new pruning algorithm based on linear integer
+            programming. Further, we generate a new inter-class dataset for
+            partial-to-partial shape-matching. We show that our method
+            outperforms current SOTA meth- ods on both an established
+            intra-class dataset and our novel inter-class dataset.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
+<!-- 
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
