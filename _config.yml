@@ -68,23 +68,20 @@ exclude:
 
 author:
   name: "Viktoria Ehm"
-  avatar: "/assets/images/profile-photo.jpg"
+  avatar: "/assets/images/portrait_viki.JPG"
   bio: >-
     PhD student @ <a href="https://cvg.cit.tum.de">TUM CVG</a><br>
     viktoria.ehm@tum.de
   links:
     - label: "CVG Page"
       icon: "fa-solid fa-fw fa-flask"
-      url: "https://cvg.cit.tum.de/members/muhled"
+      url: "https://cvg.cit.tum.de/members/ehm"
     - label: "LinkedIn"
       icon: "fa-brands fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/dominik-muhle-a6b487149/"
+      url: "https://www.linkedin.com/in/viktoria-ehm/"
     - label: "Google Scholar"
       icon: "fa-brands fa-fw fa-google-scholar"
-      url: "https://scholar.google.com/citations?user=IyFJMlQAAAAJ&hl=en"
-    - label: "X (Twitter)"
-      icon: "fa-brands fa-fw fa-x-twitter"
-      url: "https://twitter.com/dominikmuhle"
+      url: "https://scholar.google.com/citations?user=4dFBNP4AAAAJ&hl=de&oi=ao"
     - label: "GitHub"
       icon: "fa-brands fa-fw fa-github"
       url: "https://github.com/vikiehm"
