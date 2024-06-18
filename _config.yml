@@ -36,14 +36,14 @@ plugins:
 #   style: compact
 
 # ==================================================== INFORMATION ====================================================
-name: Dominik Muhle
-email: dominik.muhle@tum.de
+name: Viktoria Ehm
+email: viktoria.ehm@tum.de
 description: >- # this means to ignore newlines until "baseurl:"
   I am a PhD student at the Computer Vision Group at TU Munich under the guidance of Prof. Cremers. This is an overview over projects I was personally involved in. Check out more awesome work from our group at https://cvg.cit.tum.de/publications
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: dominikmuhle
-github_username:  dominikmuhle
+github_username: vikiehm
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -66,13 +66,12 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
 
-
 author:
-  name   : "Dominik Muhle"
-  avatar : "/assets/images/profile-photo.jpg"
-  bio    : >- 
+  name: "Viktoria Ehm"
+  avatar: "/assets/images/profile-photo.jpg"
+  bio: >-
     PhD student @ <a href="https://cvg.cit.tum.de">TUM CVG</a><br>
-    dominik.muhle@tum.de
+    viktoria.ehm@tum.de
   links:
     - label: "CVG Page"
       icon: "fa-solid fa-fw fa-flask"
@@ -88,7 +87,7 @@ author:
       url: "https://twitter.com/dominikmuhle"
     - label: "GitHub"
       icon: "fa-brands fa-fw fa-github"
-      url: "https://github.com/dominikmuhle"
+      url: "https://github.com/vikiehm"
 
 include:
   - _pages
