@@ -57,18 +57,12 @@ acknowledgements: 'This work was supported by the Munich Center for Machine Lear
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img width="100%" src="assets/pipeline_gcppsm.jpg"></img>
+      <img width="100%" src="assets/teaser.jpg"></img>
       <p class="content has-text-justified">
         <i
-          ><b> Our Partial-to-Partial Shape Matching Pipeline. </b> (Left) The
-          3D meshes are fed into a feature extractor that returns vertex-wise
-          features, that are transformed in trianglewise features. (Middle) With
-          these features, we define an integer program that ensures that every
-          triangle is matched at most once for both shapes, that at least one
-          non-boundary triangle is matched (per shape), and that neighboring
-          relationships for inner triangles are fulfilled. (Right) We tackle
-          this non-linear integer program by solving a subset of integer linear
-          programs (ILPs) for a specific number of matchings.</i
+          ><b> We present the first geometrically consistent partial-to-partial shape matching solution.
+            Our approach can find correspondences between partial shapes and thus determine the overlapping region between these shapes (left).
+            We can find correspondences within shape classes (middle), and across shape classes (right). For the latter, we introduce a new inter-class partial-to-partial matching dataset.</i
         >
       </p>
     </div>
