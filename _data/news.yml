@@ -1,3 +1,13 @@
+- date: June 2025
+  description: "We will be holding a tutorial about shape analysis at CVPR in Nashville"
+- date: May 2025
+  description: 'Our paper "Beyond Complete Shapes: A quantitative Evaluation of 3D Shape Matching Algorithms" was accepted to SGP in Bilbao.'
+- date: May 2025
+  description: "We are presenting a tutorial on shape analysis at Eurographics in London."
+- date: February 2025
+  description: 'Our Papers "EchoMatch: Partial-to-Partial Shape Matching via Correspondence Reflection" and "Higher-Order Ratio Cycles for Fast and Globally Optimal Shape Matching" have been accepted to CVPR 2025'
+- date: September 2024
+  description: "We will be holding a tutorial about shape matching on GCPR/VMV in Munich"
 - date: February 2024
   description: 'Our Paper "Partial-to-Partial Shape Matching with Geometric Consistency" has been accepted to CVPR 2024'
 - date: October 2023
