@@ -23,3 +23,19 @@ viktoriaehm:
   last_name: Ehm
   website: https://vikiehm.github.io
   is_me: true
+yizhengxie:
+  first_name: Yizheng
+  last_name: Xie
+  website: https://xieyizheng.com
+nafieelamrani:
+  first_name: Nafie
+  last_name: El Amrani
+  website: https://nafieamrani.github.io
+yizhengxieequal:
+  first_name: Yizheng
+  last_name: Xie*
+  website: https://xieyizheng.com
+viktoriaehmequal:
+  first_name: Viktoria
+  last_name: Ehm*
+  website: https://vikiehm.github.io
