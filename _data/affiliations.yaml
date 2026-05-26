@@ -7,6 +7,9 @@ mcml:
 bonn:
   long: University of Bonn
   short: University of Bonn
+lamarr:
+  long: Lamarr Institute for Machine Learning and Artificial Intelligence
+  short: Lamarr Institute
 oxford:
   long: University of Oxford
   short: Oxford
