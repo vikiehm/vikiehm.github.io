@@ -36,14 +36,523 @@ description: "A self-supervised geometry-aware approach that teaches DINOv3 abou
 
 links:
     - name: Paper
-      link:
+      link: https://openaccess.thecvf.com//content/CVPR2026/papers/Ehm_Teaching_DINOv3_About_Partial_3D_Geometry_A_Self-Supervised_Geometry-Aware_Approach_CVPR_2026_paper.pdf
       style: "bi bi-file-earmark-richtext"
+    - name: arXiv (coming soon)
+      link: "#"
+      style: "ai ai-arxiv"
+    - name: Poster
+      link: assets/poster_cvpr_2026_teaching_dinov3.pdf
+      style: "bi bi-easel"
+    - name: Video
+      link: https://www.youtube.com/watch?v=orKWCVWutXg
+      style: "bi bi-youtube"
+    - name: Code
+      link: https://github.com/vikiehm/geo-lora/
+      style: "bi bi-github"
 
-citation: '@article{ehm2026geolora,
-      title={Teaching DINOv3 About Partial 3D Geometry: A Self-Supervised Geometry-Aware Approach},
-      author={Ehm, Viktoria and Cao, Dongliang and Marin, Riccardo and Scholz, Daniel and Wang, Weikang and Bernard, Florian and Cremers, Daniel},
-      year={2026},
+citation: '@inproceedings{ehm2026geolora,
+  title={Teaching DINOv3 About Partial 3D Geometry: A Self-Supervised Geometry-Aware Approach},
+  author={Ehm, Viktoria and Cao, Dongliang and Marin, Riccardo and Scholz, Daniel and Wang, Weikang and Bernard, Florian and Cremers, Daniel},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2026}
 }'
 
-acknowledgements: 'This work was supported by the Munich Center for Machine Learning'
+acknowledgements: 'This work was supported by the Munich Center for Machine Learning and the Lamarr Institute.'
 ---
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img width="100%" src="assets/geolora_teaser.png"></img>
+      <p class="content has-text-justified">
+        <i><b>GeoLoRA</b> injects 3D geometric information into 2D foundation features from partial 3D observations,
+        yielding state-of-the-art feature quality for partial 3D shapes and improving downstream partial-to-full and
+        partial-to-partial shape matching, including robustness to geometric ambiguities such as left&ndash;right disambiguation.</i>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Problem</h2>
+        <div class="content has-text-justified">
+          <p>
+            Establishing correspondences between 3D shapes is a long-standing problem in computer vision and graphics.
+            In practice, shapes are rarely observed in their entirety: 3D scans are typically incomplete, leading to
+            <i>partial-to-full</i> and <i>partial-to-partial</i> matching settings. While 2D foundation features
+            (e.g. DINOv2/DINOv3) provide strong priors, they are unaware of 3D geometry and struggle on partial 3D
+            inputs, especially under geometric ambiguities such as the left&ndash;right symmetry of articulated shapes.
+          </p>
+          <img width="85%" src="assets/geolora_problem_formulation.png" style="display: block; margin: 0 auto;" />
+          <p>
+            <i><b>Partial shape matching.</b> Given a partial observation of a 3D shape (left of each pair), the goal is
+            to find dense correspondences to a full shape (Partial-to-Full) or to another partial observation
+            (Partial-to-Partial).</i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-left">Method</h2>
+          <p class="content has-text-justified">
+            <img width="100%" src="assets/geolora_pipeline.png" style="display: block; margin: 0 auto;" />
+            <br><br>
+            <i><b>GeoLoRA pipeline.</b> Our self-supervised training scheme teaches DINOv3 about partial 3D geometry
+            via a lightweight LoRA module.</i>
+            <br><br>
+            Given a full 3D shape $X$, we generate a partial observation $Y$ and render both shapes from multiple
+            randomly sampled viewpoints $c_i$ into images $I^i_X$ and $I^i_Y$. The rendered images are processed by a
+            shared DINOv3 feature extractor augmented with a LoRA module, producing dense pixel-wise features $Q^i_X$
+            and $Q^i_Y$. These per-view features are backprojected under the known camera $c_i$ to obtain vertex-wise
+            features $\mathbf{F}_X$ and $\mathbf{F}_Y$ on the underlying meshes. Training is driven by a contrastive
+            objective that pulls features of corresponding vertices together and pushes non-corresponding ones apart.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-left">Geodesic-Aware Contrastive Loss</h2>
+          <p class="content has-text-justified">
+            <img width="85%" src="assets/geolora_geodesic_loss.png" style="display: block; margin: 0 auto;" />
+            <br><br>
+            <i><b>Geodesic-aware contrastive loss.</b> Feature similarity is weighted by geodesic distance on the
+            full shape, so that nearby points on the surface are encouraged to have similar features and distant
+            points are pushed apart.</i>
+            <br><br>
+            For a vertex on the partial shape $Y$ and its corresponding vertex on the full shape $X$, we pull the two
+            feature vectors together. For other vertices on $X$, we push them away with a strength that depends on
+            their geodesic distance to the corresponding point: points that are geodesically close to the anchor are
+            penalized less, while points that are geodesically far are penalized more. This geodesic weighting respects
+            the intrinsic geometry of the shape and helps disambiguate geometrically symmetric regions
+            (e.g. left vs. right limbs) that are not distinguishable from local image evidence alone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-left">Results</h2>
+          <h3 class="title is-4 has-text-left">Feature Quality</h3>
+          <p class="content has-text-justified">
+            We visualize the quality of GeoLoRA features by transferring a color-coded signal from a full source shape
+            (left) to our predicted correspondences on a partial target shape (right). Use the arrows to browse all
+            qualitative pairs.
+          </p>
+
+          <style>
+            .gl-carousel { position: relative; padding: 0 56px; }
+            .gl-carousel .gl-viewport { overflow: hidden; }
+            .gl-carousel .gl-track {
+              display: flex;
+              transition: transform 0.4s ease;
+              will-change: transform;
+            }
+            .gl-carousel .gl-card {
+              flex: 0 0 calc(100% / 3);
+              box-sizing: border-box;
+              padding: 0 10px;
+            }
+            .gl-carousel .gl-card-box {
+              border: 1px solid #dcdcdc;
+              border-radius: 8px;
+              background: #fff;
+              padding: 12px;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            }
+            .gl-carousel .gl-pair {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              height: 180px;
+            }
+            .gl-carousel .gl-pair .gl-slot {
+              flex: 1 1 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+            }
+            .gl-carousel .gl-pair img {
+              max-height: 100%;
+              max-width: 100%;
+              width: auto;
+              height: auto;
+              object-fit: contain;
+            }
+            .gl-carousel .gl-labels {
+              display: flex;
+              justify-content: space-around;
+              font-size: 0.85rem;
+              color: #666;
+              margin-top: 8px;
+            }
+            .gl-carousel .gl-arrow {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 44px;
+              height: 44px;
+              border-radius: 50%;
+              border: none;
+              background: #363636;
+              color: #fff;
+              font-size: 1.4rem;
+              line-height: 1;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 2;
+            }
+            .gl-carousel .gl-arrow:hover { background: #000; }
+            .gl-carousel .gl-arrow[disabled] { opacity: 0.3; cursor: not-allowed; }
+            .gl-carousel .gl-prev { left: 0; }
+            .gl-carousel .gl-next { right: 0; }
+            @media (max-width: 768px) {
+              .gl-carousel .gl-card { flex-basis: 100%; }
+              .gl-carousel { padding: 0 48px; }
+            }
+          </style>
+
+          <div class="gl-carousel" id="gl-feature-quality">
+            <button class="gl-arrow gl-prev" aria-label="Previous">&#10094;</button>
+            <div class="gl-viewport">
+              <div class="gl-track">
+                {% for i in (0..18) %}
+                <div class="gl-card">
+                  <div class="gl-card-box">
+                    <div class="gl-pair">
+                      <div class="gl-slot"><img src="assets/qualitative_results/pair_{{ i }}/S1.png" alt="Source shape {{ i }}" /></div>
+                      <div class="gl-slot"><img src="assets/qualitative_results/pair_{{ i }}/S2_ours.png" alt="Our prediction {{ i }}" /></div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <button class="gl-arrow gl-next" aria-label="Next">&#10095;</button>
+          </div>
+
+          <script>
+            function glInitCarousel(rootId) {
+              var root = document.getElementById(rootId);
+              if (!root) return;
+              var track = root.querySelector('.gl-track');
+              var prev = root.querySelector('.gl-prev');
+              var next = root.querySelector('.gl-next');
+              var total = track.children.length;
+              var index = 0;
+
+              function visible() {
+                return window.innerWidth <= 768 ? 1 : 3;
+              }
+              function maxIndex() {
+                return Math.max(0, total - visible());
+              }
+              function update() {
+                if (index > maxIndex()) index = maxIndex();
+                var pct = (100 / visible()) * index;
+                track.style.transform = 'translateX(-' + pct + '%)';
+                prev.disabled = index <= 0;
+                next.disabled = index >= maxIndex();
+              }
+              prev.addEventListener('click', function() { index = Math.max(0, index - 1); update(); });
+              next.addEventListener('click', function() { index = Math.min(maxIndex(), index + 1); update(); });
+              window.addEventListener('resize', update);
+              update();
+            }
+            glInitCarousel('gl-feature-quality');
+          </script>
+
+          <h3 class="title is-4 has-text-left" style="margin-top: 3rem;">Left-Right Prediction</h3>
+          <p class="content has-text-justified">
+            Articulated shapes are often symmetric, so 2D foundation features alone cannot distinguish left from right.
+            For each shape below, we show the predicted left/right segmentation of <b>frozen DINOv3</b> (left) and
+            <b>GeoLoRA</b> (right). Frozen DINOv3 frequently collapses both sides into one class; GeoLoRA recovers a
+            clean left/right split.
+          </p>
+
+          {% assign chirality_ids = "1_bucksYJL_Swim9001,1_prisoner_Falling125,1_tr_reg_091,1_tr_reg_093" | split: "," %}
+          <div class="gl-carousel" id="gl-chirality">
+            <button class="gl-arrow gl-prev" aria-label="Previous">&#10094;</button>
+            <div class="gl-viewport">
+              <div class="gl-track">
+                {% for id in chirality_ids %}
+                <div class="gl-card">
+                  <div class="gl-card-box">
+                    <div class="gl-pair">
+                      <div class="gl-slot"><img src="assets/chirality_examples/{{ id }}_frozen.png" alt="DINOv3 prediction" /></div>
+                      <div class="gl-slot"><img src="assets/chirality_examples/{{ id }}_ours.png" alt="GeoLoRA prediction" /></div>
+                    </div>
+                    <div class="gl-labels"><span>DINOv3</span><span>Ours</span></div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <button class="gl-arrow gl-next" aria-label="Next">&#10095;</button>
+          </div>
+
+          <script>
+            glInitCarousel('gl-chirality');
+          </script>
+
+          <h3 class="title is-4 has-text-left" style="margin-top: 3rem;">Partial-to-Full Matching</h3>
+          <p class="content has-text-justified">
+            GeoLoRA features can be plugged into existing partial-to-full shape matching pipelines. For each pair below,
+            we show the full source shape on the left and the predicted correspondences on the partial target shape
+            for two state-of-the-art methods, <b>DPFM</b> and <b>ULRSSM</b>, each evaluated with either frozen
+            <b>DINOv3</b> features or our <b>GeoLoRA</b> features. Red circles highlight regions where DINOv3 features
+            lead to noticeable matching errors that GeoLoRA fixes.
+          </p>
+
+          <style>
+            .gl-mgrid {
+              margin-top: 1rem;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 16px;
+              justify-content: center;
+            }
+            .gl-mgrid .gl-mgrid-pair {
+              flex: 1 1 calc(50% - 16px);
+              max-width: calc(50% - 16px);
+              box-sizing: border-box;
+              display: flex;
+              align-items: stretch;
+              justify-content: center;
+              gap: 12px;
+              padding: 12px;
+              border: 1px solid #dcdcdc;
+              border-radius: 8px;
+              background: #fff;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            }
+            .gl-mgrid .gl-mgrid-source {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              flex: 0 0 auto;
+              border-right: 1px solid #eee;
+              padding-right: 12px;
+            }
+            .gl-mgrid .gl-mgrid-source img {
+              height: 160px;
+              width: auto;
+              object-fit: contain;
+            }
+            .gl-mgrid .gl-mgrid-source .gl-mgrid-caption {
+              margin-top: 4px;
+              font-size: 0.85rem;
+              font-weight: 600;
+              color: #444;
+            }
+            .gl-mgrid .gl-mgrid-grid {
+              display: grid;
+              grid-template-columns: auto 1fr 1fr;
+              grid-template-rows: auto auto auto;
+              gap: 4px 8px;
+              align-items: center;
+              justify-items: center;
+              flex: 1 1 auto;
+              min-width: 0;
+            }
+            .gl-mgrid .gl-mgrid-grid .gl-mgrid-colhdr {
+              font-size: 0.85rem;
+              font-weight: 600;
+              color: #444;
+            }
+            .gl-mgrid .gl-mgrid-grid .gl-mgrid-rowhdr {
+              font-size: 0.85rem;
+              font-weight: 600;
+              color: #444;
+              writing-mode: vertical-rl;
+              transform: rotate(180deg);
+              justify-self: end;
+            }
+            .gl-mgrid .gl-mgrid-grid img {
+              height: 110px;
+              max-width: 100%;
+              width: auto;
+              object-fit: contain;
+            }
+            @media (max-width: 1100px) {
+              .gl-mgrid .gl-mgrid-pair {
+                flex: 1 1 100%;
+                max-width: 100%;
+                flex-direction: row;
+                gap: 16px;
+                padding: 16px;
+              }
+              .gl-mgrid .gl-mgrid-source img { height: 220px; }
+              .gl-mgrid .gl-mgrid-grid img { height: 170px; }
+            }
+            @media (max-width: 700px) {
+              .gl-mgrid .gl-mgrid-pair { flex-direction: column; }
+              .gl-mgrid .gl-mgrid-source {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-right: 0;
+                padding-bottom: 12px;
+              }
+              .gl-mgrid .gl-mgrid-source img { height: 180px; }
+              .gl-mgrid .gl-mgrid-grid img { height: 140px; }
+            }
+
+            /* p2p: smaller source, larger targets */
+            .gl-mgrid.gl-mgrid--p2p .gl-mgrid-source img { height: 110px; }
+            .gl-mgrid.gl-mgrid--p2p .gl-mgrid-grid img { height: 150px; }
+            @media (max-width: 1100px) {
+              .gl-mgrid.gl-mgrid--p2p .gl-mgrid-source img { height: 160px; }
+              .gl-mgrid.gl-mgrid--p2p .gl-mgrid-grid img { height: 220px; }
+            }
+            @media (max-width: 700px) {
+              .gl-mgrid.gl-mgrid--p2p .gl-mgrid-source img { height: 140px; }
+              .gl-mgrid.gl-mgrid--p2p .gl-mgrid-grid img { height: 180px; }
+            }
+
+            /* real-world: 1 shared source, 2 columns (no row labels), multiple scan rows */
+            .gl-mgrid.gl-mgrid--rw .gl-mgrid-pair {
+              flex: 1 1 100%;
+              max-width: 900px;
+              margin: 0 auto;
+            }
+            .gl-mgrid.gl-mgrid--rw .gl-mgrid-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+            .gl-mgrid.gl-mgrid--rw .gl-mgrid-source img { height: 320px; }
+            .gl-mgrid.gl-mgrid--rw .gl-mgrid-grid img { height: 150px; }
+            .gl-mgrid.gl-mgrid--rw .gl-rw-big img { height: 220px; }
+            .gl-mgrid.gl-mgrid--rw .gl-rw-small img { height: 120px; }
+            .gl-mgrid.gl-mgrid--rw .gl-rw-scan--statue_2_vis { margin-top: -40px; }
+            @media (max-width: 1100px) {
+              .gl-mgrid.gl-mgrid--rw .gl-mgrid-source img { height: 360px; }
+              .gl-mgrid.gl-mgrid--rw .gl-mgrid-grid img { height: 170px; }
+              .gl-mgrid.gl-mgrid--rw .gl-rw-big img { height: 260px; }
+              .gl-mgrid.gl-mgrid--rw .gl-rw-small img { height: 140px; }
+            }
+            @media (max-width: 700px) {
+              .gl-mgrid.gl-mgrid--rw .gl-mgrid-source img { height: 220px; }
+              .gl-mgrid.gl-mgrid--rw .gl-mgrid-grid img { height: 140px; }
+              .gl-mgrid.gl-mgrid--rw .gl-rw-big img { height: 200px; }
+              .gl-mgrid.gl-mgrid--rw .gl-rw-small img { height: 110px; }
+            }
+          </style>
+
+          <div class="gl-mgrid">
+            {% assign p2f_pairs = "pair_1,pair_2" | split: "," %}
+            {% for p in p2f_pairs %}
+            <div class="gl-mgrid-pair">
+              <div class="gl-mgrid-source">
+                <img src="assets/p2f_matching_methods/{{ p }}/S1.png" alt="Source shape" />
+                <div class="gl-mgrid-caption">Source</div>
+              </div>
+              <div class="gl-mgrid-grid">
+                <div></div>
+                <div class="gl-mgrid-colhdr">DINOv3</div>
+                <div class="gl-mgrid-colhdr">GeoLoRA (Ours)</div>
+
+                <div class="gl-mgrid-rowhdr">DPFM</div>
+                <div><img src="assets/p2f_matching_methods/{{ p }}/with_circles/S2_dpfm_dino.png" alt="DPFM with DINOv3" /></div>
+                <div><img src="assets/p2f_matching_methods/{{ p }}/S2_dpfm_ours.png" alt="DPFM with GeoLoRA" /></div>
+
+                <div class="gl-mgrid-rowhdr">ULRSSM</div>
+                <div><img src="assets/p2f_matching_methods/{{ p }}/with_circles/S2_ulrssm_dino.png" alt="ULRSSM with DINOv3" /></div>
+                <div><img src="assets/p2f_matching_methods/{{ p }}/S2_ulrssm_ours.png" alt="ULRSSM with GeoLoRA" /></div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <h3 class="title is-4 has-text-left" style="margin-top: 3rem;">Partial-to-Partial Matching</h3>
+          <p class="content has-text-justified">
+            GeoLoRA also improves <i>partial-to-partial</i> shape matching, where both shapes are only partially observed.
+            For each pair below, we show the source partial shape on the left and the predicted correspondences on the
+            target partial shape for two state-of-the-art methods, <b>DPFM</b> and <b>EchoMatch</b>, each evaluated with
+            either frozen <b>DINOv3</b> features or our <b>GeoLoRA</b> features. Vertices shown in <span style="color:#d33;"><b>red</b></span>
+            mark the non-overlapping region (vertices of the target that have no correspondence in the source).
+            Black circles highlight regions where DINOv3 features lead to matching errors that GeoLoRA fixes.
+          </p>
+
+          <div class="gl-mgrid gl-mgrid--p2p">
+            {% assign p2p_pairs = "pair_1,pair_2" | split: "," %}
+            {% for p in p2p_pairs %}
+            <div class="gl-mgrid-pair">
+              <div class="gl-mgrid-source">
+                <img src="assets/p2p_matching_method/{{ p }}/S1.png" alt="Source shape" />
+                <div class="gl-mgrid-caption">Source</div>
+              </div>
+              <div class="gl-mgrid-grid">
+                <div></div>
+                <div class="gl-mgrid-colhdr">DINOv3</div>
+                <div class="gl-mgrid-colhdr">GeoLoRA (Ours)</div>
+
+                <div class="gl-mgrid-rowhdr">DPFM</div>
+                <div><img src="assets/p2p_matching_method/{{ p }}/S2_dpfm_frozen.png" alt="DPFM with DINOv3" /></div>
+                <div><img src="assets/p2p_matching_method/{{ p }}/S2_dpfm.png" alt="DPFM with GeoLoRA" /></div>
+
+                <div class="gl-mgrid-rowhdr">EchoMatch</div>
+                <div><img src="assets/p2p_matching_method/{{ p }}/S2_echo_frozen.png" alt="EchoMatch with DINOv3" /></div>
+                <div><img src="assets/p2p_matching_method/{{ p }}/S2_echo.png" alt="EchoMatch with GeoLoRA" /></div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <h3 class="title is-4 has-text-left" style="margin-top: 3rem;">Real-World Scans</h3>
+          <p class="content has-text-justified">
+            We also test GeoLoRA on noisy real-world 3D scans. Each scan (right) is matched against a clean full-shape
+            template (left) using either frozen <b>DINOv3</b> features or our <b>GeoLoRA</b> features. While DINOv3
+            features collapse to a single dominant color across most of the scan &mdash; indicating poor correspondences
+            &mdash; GeoLoRA recovers detailed, semantically meaningful matches.
+          </p>
+
+          {% assign rw_scans = "ric3_vis,statue_2_vis,statue_3_vis" | split: "," %}
+          <div class="gl-mgrid gl-mgrid--rw">
+            <div class="gl-mgrid-pair">
+              <div class="gl-mgrid-source">
+                <img src="assets/real_world_scans/full.png" alt="Full-shape template" />
+                <div class="gl-mgrid-caption">Template</div>
+              </div>
+              <div class="gl-mgrid-grid">
+                <div class="gl-mgrid-colhdr">DINOv3</div>
+                <div class="gl-mgrid-colhdr">GeoLoRA (Ours)</div>
+                {% for s in rw_scans %}
+                {% if s == "ric3_vis" %}{% assign sz = "gl-rw-big" %}{% else %}{% assign sz = "gl-rw-small" %}{% endif %}
+                <div class="{{ sz }} gl-rw-scan--{{ s }}"><img src="assets/real_world_scans/{{ s }}_frozen.png" alt="{{ s }} with DINOv3" /></div>
+                <div class="{{ sz }} gl-rw-scan--{{ s }}"><img src="assets/real_world_scans/{{ s }}.png" alt="{{ s }} with GeoLoRA" /></div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
