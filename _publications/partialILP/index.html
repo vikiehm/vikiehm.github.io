@@ -1,0 +1,91 @@
+---
+layout: publications
+permalink: /publications/partialILP/
+date: 2026_02_01 # determines sorting just take the date of the first publication as YYYY_MM_DD
+image: assets/teaser_3dv_26.png
+image_mouseover: assets/teaser_3dv_26.png
+
+title: "An Integer Linear Programming Approach to Geometrically Consistent Partial-Partial Shape Matching"
+venue: 3DV, 2026
+authors:
+  - name: viktoriaehm
+    affiliations: "1,2"
+  - name: paulroetzer
+    affiliations: "3,4"
+  - name: florianbernard
+    affiliations: "3,4"
+  - name: danielcremers
+    affiliations: "1,2"
+affiliations:
+  - name: tum
+    length: short
+  - name: mcml
+    length: long
+  - name: bonn
+    length: short
+  - name: lamarr
+    length: short
+
+description: "The first integer linear programming approach for geometrically consistent partial-to-partial 3D shape matching."
+
+links:
+    - name: Paper
+      link: https://arxiv.org/pdf/2602.06590
+      style: "bi bi-file-earmark-richtext"
+    - name: arXiv
+      link: https://arxiv.org/abs/2602.06590
+      style: "ai ai-arxiv"
+    - name: Code
+      link: https://github.com/vikiehm/partial-geco
+      style: "bi bi-github"
+
+citation: '@inproceedings{ehm2026integer,
+  title={An Integer Linear Programming Approach to Geometrically Consistent Partial-Partial Shape Matching},
+  author={Ehm, Viktoria and Roetzer, Paul and Bernard, Florian and Cremers, Daniel},
+  booktitle={International Conference on 3D Vision (3DV)},
+  year={2026}
+}'
+
+acknowledgements: 'This work was supported by the Munich Center for Machine Learning and the Lamarr Institute.'
+---
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img width="100%" src="assets/teaser_3dv_26.png"></img>
+      <p class="content has-text-justified">
+        <i>We show matching results for pairs of partial shapes computed with our method using colour transfer.
+        We propose the first <b>integer linear programming</b> approach explicitly tailored to partial-partial shape
+        matching with geometric consistency, making our method more scalable than previous (integer non-linear)
+        formalisms.</i>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The task of establishing correspondences between two 3D shapes is a long-standing challenge in computer
+            vision. While numerous studies address full-full and partial-full 3D shape matching, only a limited number
+            of works have explored the partial-partial setting, very likely due to its unique challenges: we must
+            compute accurate correspondences while at the same time find the unknown overlapping region. Nevertheless,
+            partial-partial 3D shape matching reflects the most realistic setting, as in many real-world cases, such as
+            3D scanning, shapes are only partially observable. In this work, we introduce the first integer linear
+            programming approach specifically designed to address the distinctive challenges of partial-partial shape
+            matching. Our method leverages geometric consistency as a strong prior, enabling both robust estimation of
+            the overlapping region and computation of neighbourhood-preserving correspondences. We empirically
+            demonstrate that our approach achieves high-quality matching results both in terms of matching error and
+            smoothness. Moreover, we show that our method is more scalable than previous formalisms. Our code is
+            publicly available at
+            <a href="https://github.com/vikiehm/partial-geco">https://github.com/vikiehm/partial-geco</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
