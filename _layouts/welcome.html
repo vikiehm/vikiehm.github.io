@@ -9,12 +9,15 @@ classes: wide
   I am a PhD student in the Computer Vision Group at the TU Munich, supervised
   by Prof. Daniel Cremers.
   <br />
+  Currently I am doing a research internship at Adobe in Paris.
+  <br />
   My research interests mainly lie in the area of 3D shape matching, while I am
   currently mainly focusing on partial shapes.
   <br />
   I received my bachelor's degree at Ludwig Maximilans University (LMU) and my
   master's degree at Technical University of Munich (TUM), both in computer
   science.
+  <br />
 </p>
 
 <div class="hr">
@@ -26,6 +29,9 @@ classes: wide
 <h2 class="title is-3">News</h2>
 <div class="content">
   {% for news in site.data.news %}
+  {% if forloop.index == 8 %}
+  <div id="more-news" style="display: none;">
+  {% endif %}
   <b>{{ news.date }}</b>: {{ news.description | markdownify | remove: '
   <p>' | remove: '</p>
   ' }}
@@ -33,4 +39,14 @@ classes: wide
     <hr />
   </div>
   {% endfor %}
+  {% if site.data.news.size > 7 %}
+  </div>
+  <button
+    id="more-news-btn"
+    class="button is-normal is-rounded is-dark"
+    onclick="document.getElementById('more-news').style.display = 'block'; this.style.display = 'none';"
+  >
+    Show more
+  </button>
+  {% endif %}
 </div>

@@ -1,3 +1,11 @@
+- date: April 2026
+  description: "I started a research internship at Adobe in Paris."
+- date: February 2026
+  description: 'Our paper "Teaching DINOv3 About Partial 3D Geometry: A Self-Supervised Geometry-Aware Approach" has been accepted to CVPR 2026.'
+- date: December 2025
+  description: "I was visiting the group of [Maks Ovsjanikov](http://www.lix.polytechnique.fr/~maks/) at École Polytechnique in Paris from December 2025 to February 2026."
+- date: November 2025
+  description: 'Our paper "An Integer Linear Programming Approach to Geometrically Consistent Partial-Partial Shape Matching" has been accepted to 3DV 2026.'
 - date: June 2025
   description: "We will be holding a tutorial about shape analysis at CVPR in Nashville"
 - date: May 2025

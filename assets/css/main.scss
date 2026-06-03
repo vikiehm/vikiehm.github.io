@@ -128,3 +128,11 @@ article.page {
         margin-top: 0.5em !important;
     }
 }
+
+// Keep the sidebar (and avatar) fully opaque — remove the faded/hover filter
+.sidebar,
+.sidebar:hover {
+    opacity: 1;
+    -webkit-transition: none;
+    transition: none;
+}

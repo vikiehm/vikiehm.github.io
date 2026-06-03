@@ -1,5 +1,5 @@
 function formateCitation(citation) {
-  const reg = /,([^=]+=)/g
+  const reg = /,([^=,]+=)/g
   var new_format = citation.replace(reg, ",\n  $1")
 
   new_format = new_format.replace(/,( *)}/g, ",$1\n}")
@@ -7,7 +7,7 @@ function formateCitation(citation) {
 }
 
 function formateCitationHTML(citation) {
-  const reg = /,([^=]+=)/g
+  const reg = /,([^=,]+=)/g
   var new_format = citation.replace(reg, ",<br>  $1")
 
   new_format = new_format.replace(/,( *)}/g, ",$1<br>}")
