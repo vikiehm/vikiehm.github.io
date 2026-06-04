@@ -38,16 +38,13 @@ links:
     - name: Paper
       link: https://openaccess.thecvf.com//content/CVPR2026/papers/Ehm_Teaching_DINOv3_About_Partial_3D_Geometry_A_Self-Supervised_Geometry-Aware_Approach_CVPR_2026_paper.pdf
       style: "bi bi-file-earmark-richtext"
-    - name: arXiv (coming soon)
-      link: "#"
-      style: "ai ai-arxiv"
     - name: Poster
       link: assets/poster_cvpr_2026_teaching_dinov3.pdf
       style: "bi bi-easel"
     - name: Video
       link: https://www.youtube.com/watch?v=orKWCVWutXg
       style: "bi bi-youtube"
-    - name: Code
+    - name: Code (coming soon)
       link: https://github.com/vikiehm/geo-lora/
       style: "bi bi-github"
 
@@ -66,9 +63,10 @@ acknowledgements: 'This work was supported by the Munich Center for Machine Lear
     <div class="hero-body">
       <img width="100%" src="assets/geolora_teaser.png"></img>
       <p class="content has-text-justified">
-        <i><b>GeoLoRA</b> injects 3D geometric information into 2D foundation features from partial 3D observations,
-        yielding state-of-the-art feature quality for partial 3D shapes and improving downstream partial-to-full and
-        partial-to-partial shape matching, including robustness to geometric ambiguities such as left&ndash;right disambiguation.</i>
+        <i><b>GeoLoRA</b> refines DINO features via LoRA-based self-supervised learning to make them robust to
+        partiality. The resulting descriptors substantially improve partial shape matching over traditional and
+        vision foundation features, and, when plugged into existing matching pipelines, achieve state-of-the-art
+        results on partial shape matching and left&ndash;right prediction benchmarks.</i>
       </p>
     </div>
   </div>
@@ -108,8 +106,8 @@ acknowledgements: 'This work was supported by the Munich Center for Machine Lear
           <p class="content has-text-justified">
             <img width="100%" src="assets/geolora_pipeline.png" style="display: block; margin: 0 auto;" />
             <br><br>
-            <i><b>GeoLoRA pipeline.</b> Our self-supervised training scheme teaches DINOv3 about partial 3D geometry
-            via a lightweight LoRA module.</i>
+            <i><b>GeoLoRA pipeline.</b> We refine DINOv3 with a lightweight LoRA module through self-supervised
+            learning, producing feature descriptors that are robust to partiality.</i>
             <br><br>
             Given a full 3D shape $X$, we generate a partial observation $Y$ and render both shapes from multiple
             randomly sampled viewpoints $c_i$ into images $I^i_X$ and $I^i_Y$. The rendered images are processed by a
